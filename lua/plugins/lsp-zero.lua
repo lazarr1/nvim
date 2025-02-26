@@ -15,6 +15,9 @@ return {
       cmp.setup({
         sources = {
           {name = 'nvim_lsp'},
+          { name = 'luasnip' },
+          { name = 'buffer' },
+          { name = 'path'},
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-Space>'] = cmp.mapping.complete(),
@@ -46,6 +49,36 @@ return {
       vim.opt.signcolumn = 'yes'
     end,
     config = function()
+      local lspconfig = require("lspconfig")
+
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+      lspconfig.lua_ls.setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = { Lua = { completion = { callSnippet = "Replace", enable = true } } },
+      })
+
+       lspconfig.eslint.setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = {
+              codeActionOnSave = {
+                  enable = true,
+                  mode = "all"
+              },
+          formatting = {
+              insertSpaces = false,
+          }
+          }
+      }
+      -- lspconfig.eslint.setup({
+      --     on_attach = on_attach,
+      --     capabilities = capabilities,
+      --     settings = { typescript = { completion = { callSnippet = "Replace", enable = true } } },
+      --   })
       local lsp_defaults = require('lspconfig').util.default_config
 
       -- Add cmp_nvim_lsp capabilities settings to lspconfig
@@ -73,6 +106,7 @@ return {
           vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
           vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
           vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+          vim.keymap.set('n', '<leader>vrn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
         end,
       })
 
@@ -87,5 +121,6 @@ return {
         }
       })
     end
+
   }
 }
