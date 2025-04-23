@@ -51,3 +51,13 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 
 vim.keymap.set("n", "<leader>o", "o<Esc>")
 vim.keymap.set("n", "<leader>O", "O<Esc>")
+
+vim.opt.formatoptions:append("r") -- continue comments when pressing Enter
+vim.opt.formatoptions:append("n") -- insert space after comment prefix
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+  callback = function()
+    vim.opt_local.commentstring = "// %s"  -- Add a space after the comment
+  end,
+})

@@ -1,12 +1,12 @@
 -- local null_ls = require("null-ls")
 --
 -- null_ls.setup({
---     sources = {
---         null_ls.builtins.formatting.prettier.with({
+-- 	sources = {
+-- 		null_ls.builtins.formatting.prettier.with({
 --             -- Point to the global .prettierrc file located in your home directory
---             extra_args = { "--config", vim.fn.expand("~/.prettierrc"), "--use-tabs" }
---         }),
---     },
+-- 			extra_args = { "--config", vim.fn.expand("~/.prettierrc") }
+-- 		}),
+-- 	},
 -- })
 --
 -- vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.format()")
