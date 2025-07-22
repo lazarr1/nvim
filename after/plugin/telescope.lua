@@ -11,3 +11,7 @@ end)
 vim.keymap.set('n', '<leader>pS', function()
 	builtin.grep_string({ search = vim.fn.input("Grep all > "),  follow=true, vimgrep_arguments = { 'rg', '--no-ignore', '--hidden', '--vimgrep' }, hidden = true } );
 end)
+
+
+vim.keymap.set('n', '<leader>et', '<cmd>TroubleToggle<CR>', { silent = true })
+vim.keymap.set('n', '<leader>dt', '<cmd>Telescope diagnostics<CR>', { silent = true })

@@ -61,3 +61,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.commentstring = "// %s"  -- Add a space after the comment
   end,
 })
+
+vim.opt.clipboard:append("unnamed")
+

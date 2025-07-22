@@ -3,12 +3,16 @@ vim.g.ale_linters = {
     typescript = { 'eslint' },
     javascriptreact = { 'eslint' },
     typescriptreact = { 'eslint' },
+    python = { 'pylsp' }, -- Add Python linters
+
 }
 vim.g.ale_fixers = {
     javascript = { 'eslint' },
     typescript = { 'eslint' },
     javascriptreact = { 'eslint' },
     typescriptreact = { 'eslint' },
+    python = { 'black' }, -- Add Python fixers
+
 }
 
 
