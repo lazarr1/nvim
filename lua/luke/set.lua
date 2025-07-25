@@ -31,3 +31,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 
+vim.api.nvim_create_autocmd(
+  "FileType", {
+  pattern={"qf"},
+  command=[[nnoremap <buffer> <CR> <CR>:cclose<CR>]]})
