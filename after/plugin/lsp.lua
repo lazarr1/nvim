@@ -1,4 +1,6 @@
--- To edit this, its all in the lsp-zero.lua file (it doe snot use lsp-zero)
+-- To edit this, its all in the lsp-zero.lua file (it does not use lsp-zero)
+local opts = { noremap = true, silent = true }
+
 -- vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
 vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
 vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
@@ -12,7 +14,10 @@ vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 vim.keymap.set('n', '<leader>vrn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 
 
-require('lspconfig').pylsp.setup({
+require("mason").setup()
+require("mason-lspconfig").setup()
+
+vim.lsp.config('pylsp', {
 	settings = {
 		pylsp = {
 			plugins = {
@@ -33,9 +38,7 @@ require('lspconfig').pylsp.setup({
 		PATH = vim.fn.getcwd() .. "/venv/bin:" .. vim.env.PATH,
 	},
 })
-
-require("mason").setup()
-require("mason-lspconfig").setup()
+vim.lsp.enable('pylsp')
 
 
 vim.diagnostic.config({
