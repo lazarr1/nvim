@@ -62,5 +62,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+
+-- Markdown preview with Glow
+vim.keymap.set("n", "<leader>md", ":Glow<CR>", { desc = "Markdown Preview (Glow)" })
 vim.opt.clipboard:append("unnamed")
 
