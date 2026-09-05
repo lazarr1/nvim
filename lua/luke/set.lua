@@ -4,10 +4,10 @@ vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
 
-vim.opt.expandtab = false      -- Don't convert tabs to spaces
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 
 vim.opt.smartindent = true
 
@@ -35,3 +35,5 @@ vim.api.nvim_create_autocmd(
   "FileType", {
   pattern={"qf"},
   command=[[nnoremap <buffer> <CR> <CR>:cclose<CR>]]})
+
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>")
