@@ -65,5 +65,17 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Markdown preview with Glow
 vim.keymap.set("n", "<leader>md", ":Glow<CR>", { desc = "Markdown Preview (Glow)" })
-vim.opt.clipboard:append("unnamed")
+-- Copy relative path to the system clipboard using 'yr'
+vim.keymap.set('n', 'yr', function()
+  local rel_path = vim.fn.expand('%:.')
+  vim.fn.setreg('+', rel_path)
+  print("Copied relative path: " .. rel_path)
+end, { desc = 'Copy relative path to clipboard' })
+
+-- Copy absolute path to the system clipboard using 'ya'
+vim.keymap.set('n', 'ya', function()
+  local abs_path = vim.fn.expand('%:p')
+  vim.fn.setreg('+', abs_path)
+  print("Copied absolute path: " .. abs_path)
+end, { desc = 'Copy absolute path to clipboard' })
 
